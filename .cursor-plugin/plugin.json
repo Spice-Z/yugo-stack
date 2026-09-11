@@ -2,13 +2,13 @@
   "name": "yugo-stack",
   "displayName": "yugo-stack",
   "version": "0.1.0",
-  "description": "Personal Cursor skills. Start with /so — simplify the last chat into minimal bullets.",
+  "description": "Personal Cursor skills. /so recaps the last chat. /how investigates how a feature works.",
   "author": {
     "name": "Yugo Ogura"
   },
   "homepage": "https://github.com/Spice-Z/yugo-stack",
   "repository": "https://github.com/Spice-Z/yugo-stack",
   "license": "MIT",
-  "keywords": ["skills", "so"],
+  "keywords": ["skills", "so", "how"],
   "skills": "./skills/"
 }

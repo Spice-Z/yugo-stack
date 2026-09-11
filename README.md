@@ -1,6 +1,6 @@
 # yugo-stack
 
-Personal Cursor plugin. One skill to start.
+Personal Cursor plugin.
 
 ## Install
 
@@ -23,6 +23,7 @@ Then reload again.
 | Skill | What it does |
 | --- | --- |
 | `/so` | Simplifies the last chat and explains it with minimal bullet points |
+| `/how` | Investigates how a backend or mobile feature works and generates diagrams |
 
 ## Add a skill
 
