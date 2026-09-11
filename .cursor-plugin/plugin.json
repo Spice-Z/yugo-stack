@@ -2,13 +2,13 @@
   "name": "yugo-stack",
   "displayName": "yugo-stack",
   "version": "0.1.0",
-  "description": "Personal Cursor skills. /so recaps the last chat. /how investigates how a feature works.",
+  "description": "Personal Cursor skills. /so recaps the last chat. /how investigates a feature. /up-yugo pulls the local plugin.",
   "author": {
     "name": "Yugo Ogura"
   },
   "homepage": "https://github.com/Spice-Z/yugo-stack",
   "repository": "https://github.com/Spice-Z/yugo-stack",
   "license": "MIT",
-  "keywords": ["skills", "so", "how"],
+  "keywords": ["skills", "so", "how", "up-yugo"],
   "skills": "./skills/"
 }

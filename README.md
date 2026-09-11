@@ -10,7 +10,7 @@ git clone https://github.com/Spice-Z/yugo-stack.git ~/.cursor/plugins/local/yugo
 
 Reload Cursor (`Developer: Reload Window`).
 
-On another machine, run the same clone. To update:
+On another machine, run the same clone. To update, run `/up-yugo` or:
 
 ```bash
 git -C ~/.cursor/plugins/local/yugo-stack pull
@@ -24,6 +24,7 @@ Then reload again.
 | --- | --- |
 | `/so` | Simplifies the last chat and explains it with minimal bullet points |
 | `/how` | Investigates how a backend or mobile feature works and generates diagrams |
+| `/up-yugo` | Pulls `~/.cursor/plugins/local/yugo-stack` so this machine gets the latest skills |
 
 ## Add a skill
 
