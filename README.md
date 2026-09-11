@@ -22,7 +22,7 @@ Then reload again.
 
 | Skill | What it does |
 | --- | --- |
-| `/so` | Simplifies the last chat and explains it with minimal bullet points |
+| `/so` | Simplifies the last message and explains it with minimal bullet points |
 | `/japa` | Explains the same thing as the last chat, in Japanese |
 | `/how` | Investigates how a backend or mobile feature works and generates diagrams |
 | `/up-yugo` | Pulls `~/.cursor/plugins/local/yugo-stack` so this machine gets the latest skills |

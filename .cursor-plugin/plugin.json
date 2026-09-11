@@ -2,7 +2,7 @@
   "name": "yugo-stack",
   "displayName": "yugo-stack",
   "version": "0.1.0",
-  "description": "Personal Cursor skills. /so recaps the last chat. /japa explains it in Japanese. /how investigates a feature. /up-yugo pulls the local plugin.",
+  "description": "Personal Cursor skills. /so recaps the last message. /japa explains it in Japanese. /how investigates a feature. /up-yugo pulls the local plugin.",
   "author": {
     "name": "Yugo Ogura"
   },
