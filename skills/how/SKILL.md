@@ -13,25 +13,20 @@ The user will provide a short feature description. Trace how it works on whateve
 
 ## Phase 1: Research
 
-First decide which surfaces exist. Then search in parallel.
+Do not search the repo yourself first. Launch **parallel Task subagents** in one turn, then stitch their results. These are Cursor agent types (`explore`, `generalPurpose`), not skills in this pack.
 
-**Always**
-- files matching the feature keywords
-- usage patterns and call sites
+1. Skim only enough to guess which surfaces exist (mobile, backend, or both).
+2. Start 2–3 subagents together:
 
-**Backend, if present**
-- routes, handlers, jobs, consumers
-- domain/services
-- models, queries, migrations, tables
-- queues, third-party APIs
+| Subagent | Type | Thoroughness | Job |
+| --- | --- | --- | --- |
+| Keywords | `explore` | medium | Files, symbols, and call sites matching the feature keywords |
+| Backend | `explore` | medium | Routes, handlers, jobs, services, models, tables, queues — skip if no backend |
+| Mobile / UI | `explore` | medium | Screens, navigation, view models, hooks, stores, clients, native modules — skip if no UI |
 
-**Mobile / frontend, if present**
-- screens, navigation, routes
-- view models, hooks, stores, controllers
-- UI components and user actions
-- network clients, local cache, native modules
+3. If one path is still unclear after they return, launch one `generalPurpose` follow-up to trace that path. Do not start the write-up until the first wave is back.
 
-Skip layers that are not in the repo. For each file, note: relative path, package/app name, key functions, and how it connects.
+Each subagent should return: relative paths, package/app name, key functions, and how the files connect. Skip layers that are not in the repo.
 
 ## Phase 2: Explain
 
