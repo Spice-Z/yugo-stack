@@ -23,6 +23,7 @@ Then reload again.
 | Skill | What it does |
 | --- | --- |
 | `/so` | Simplifies the last message and explains it with minimal bullet points |
+| `/restate` | Restates the last user message in the agent's own words |
 | `/japa` | Explains the same thing as the last chat, in Japanese |
 | `/how` | Investigates how a backend or mobile feature works and generates diagrams |
 | `/up-yugo` | Pulls `~/.cursor/plugins/local/yugo-stack` so this machine gets the latest skills |
