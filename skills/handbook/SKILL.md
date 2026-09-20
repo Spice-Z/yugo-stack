@@ -2,9 +2,9 @@
 name: handbook
 description: >-
   Research the user's question and write a Notion handbook: one
-  index page plus a subpage per section. Chapter 1 is an abstract
-  that starts with "What you should know". Use only when the user
-  invokes /handbook.
+  index page (TOC + Sources only) plus a subpage per chapter,
+  including Chapter 1 Abstract. Use only when the user invokes
+  /handbook.
 disable-model-invocation: true
 ---
 
@@ -35,28 +35,31 @@ Keep a source list as you go: title, URL, why it is trustworthy. Discard blogs t
 
 ## Outline before writing
 
-Answer the question, then stop. Chapter 1 is always the abstract. Later chapters are only the parts of *that* question, in reading order — not a dump of search results, and no target count.
+Answer the question, then stop. Chapter 1 is always the abstract, and it is always its own Notion page. Later chapters are only the parts of *that* question, in reading order — not a dump of search results, and no target count.
 
 Adjacent context is a link (or a Sources line), not another chapter. Do not add Background, History, Extra, or "also useful" chapters.
 
 ## Book shape
 
-Always two layers. Never put the whole handbook on one page.
+Always two layers. Never put the whole handbook on one page. **No chapter body lives on the index** — not even Chapter 1.
 
-1. **Index page** — one child of the user's Notion parent. Holds Chapter 1 (Abstract), a TOC of section pages, and Sources.
-2. **Section pages** — one child of the index per later chapter. No section lives only as a heading on the index.
+1. **Index page** — one child of the user's Notion parent. Holds only a TOC, a list of chapter pages, and Sources. No abstract, no diagrams, no chapter prose.
+2. **Chapter pages** — one child of the index **per chapter**, including Chapter 1 (Abstract). No chapter lives only as a heading on the index.
 
 ```
 User's Notion parent
-└── Handbook: [title]          ← index
+└── Handbook: [title]          ← index (TOC + Sources only)
+    ├── Chapter 1 — Abstract
     ├── Chapter 2 — [section]
     ├── Chapter 3 — [section]
     └── What this does not cover   ← only if research left real gaps
 ```
 
-On the index: do not put the page title in the body. Set `properties.title` from the question (short handbook title). Set an icon. Add `<table_of_contents/>` near the top. List each section with `<mention-page>` after the section pages exist.
+On the index: do not put the page title in the body. Set `properties.title` from the question (short handbook title). Set an icon. Add `<table_of_contents/>` near the top. List each chapter, including Chapter 1, with `<mention-page>` after the chapter pages exist. Do not paste Chapter 1 onto the index and then "also" create a subpage.
 
 ### Chapter 1 — Abstract
+
+Create this as a **child page of the index**, titled `Chapter 1 — Abstract`. Do not write it into the index body.
 
 The map, not the territory. After this chapter the reader should know what the subject is, the main parts, how they connect, and what they will learn next. No API lists, no deep how-to, no edge cases.
 
@@ -71,6 +74,7 @@ Must include:
 - **What you should know** first: the whole picture in plain language
 - One map diagram of the whole system (Mermaid `flowchart` or `C4Context`)
 - A "How to read this handbook" line that points at the later chapters
+- A "Read next" pointer to Chapter 2 (use `<mention-page>` after that page exists)
 
 ### Chapters 2+
 
@@ -85,7 +89,7 @@ Each detailed chapter must include **more than prose**:
 | Table or columns | A comparison, vs-table, or "use A / use B" |
 | Resource links | 2–5 primary sources for that chapter |
 
-End each section page with a short "Read next" pointer to the next section page. Put the full cited-URL list in **Sources on the index**, one line on why each is there. Use Markdown links for external URLs. Use Notion mentions only for existing Notion pages.
+End each chapter page, including Chapter 1, with a short "Read next" pointer to the next chapter page. Put the full cited-URL list in **Sources on the index**, one line on why each is there. Use Markdown links for external URLs. Use Notion mentions only for existing Notion pages.
 
 ### What this does not cover (optional)
 
@@ -96,10 +100,10 @@ Add this chapter only when research left real gaps: unanswered parts of the ques
 Read the MCP resource `notion://docs/enhanced-markdown-spec` before writing content. Do not invent Markdown.
 
 1. Fetch the parent the user named. Confirm it is a writable page or database. If fetch fails or it is not writable, say so and **stop**.
-2. Create the **index** as a child of that parent. Never use `creation_mode: "draft"`. Never edit the parent's existing content.
-3. Create **one child page per section** under the index (`parent.page_id` = index). Wait for the index id before creating sections.
+2. Create the **index** as a child of that parent. Never use `creation_mode: "draft"`. Never edit the parent's existing content. Index content is TOC + chapter mentions + Sources only.
+3. Create **one child page per chapter** under the index (`parent.page_id` = index), **including Chapter 1 — Abstract**. Wait for the index id before creating chapter pages.
 4. Use `notion-create-pages`. Default `allow_async: true`. If it returns an async task, wait with `notion-get-async-task`.
-5. Update the index so each section is listed with `<mention-page>`. Do not use `<page>` (that moves pages).
+5. Update the index so each chapter is listed with `<mention-page>`, Chapter 1 first. Do not use `<page>` (that moves pages).
 6. Give the user the **index** URL.
 
 Required Notion flavor:
