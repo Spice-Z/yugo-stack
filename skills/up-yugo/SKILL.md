@@ -24,7 +24,13 @@ git clone https://github.com/Spice-Z/yugo-stack.git ~/.cursor/plugins/local/yugo
 git -C ~/.cursor/plugins/local/yugo-stack pull
 ```
 
-3. Report the new `HEAD` short hash and which skills changed, if the pull output says so.
+3. Refresh the Cloud Agent copies (real files, not symlinks):
+
+```bash
+~/.cursor/plugins/local/yugo-stack/setup.sh
+```
+
+4. Report the new `HEAD` short hash and which skills changed, if the pull output says so.
 
 ## After
 

@@ -6,14 +6,18 @@ Personal Cursor plugin.
 
 ```bash
 git clone https://github.com/Spice-Z/yugo-stack.git ~/.cursor/plugins/local/yugo-stack
+~/.cursor/plugins/local/yugo-stack/setup.sh
 ```
 
 Reload Cursor (`Developer: Reload Window`).
 
-On another machine, run the same clone. To update, run `/up-yugo` or:
+`setup.sh` copies each skill as real files into your Cursor user Agent Store. Cloud Agents only see those copies — they do not follow `~/.cursor/skills` symlinks.
+
+On another machine, run the same clone and `setup.sh`. To update, run `/up-yugo` or:
 
 ```bash
 git -C ~/.cursor/plugins/local/yugo-stack pull
+~/.cursor/plugins/local/yugo-stack/setup.sh
 ```
 
 Then reload again.
