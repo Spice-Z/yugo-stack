@@ -31,6 +31,7 @@ Then reload again.
 | `/japa` | Explains the same thing as the last chat, in Japanese |
 | `/intern` | Explains the same thing as the last chat, as you do for intern |
 | `/how` | Investigates how a backend or mobile feature works and generates diagrams |
+| `/radar` | Maps a PR diff to user-facing APIs/screens and counts real production usage |
 | `/handbook` | Researches a question and writes a Notion handbook (index + section pages) |
 | `/up-yugo` | Pulls `~/.cursor/plugins/local/yugo-stack` so this machine gets the latest skills |
 

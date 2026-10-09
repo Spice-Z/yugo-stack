@@ -5,7 +5,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS_DIR="$REPO_DIR/skills"
-SKILLS=(how intern japa restate so up-yugo)
+SKILLS=(handbook how intern japa radar restate so up-yugo)
 
 user_store_skills() {
   local candidates=(
