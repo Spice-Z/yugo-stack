@@ -14,7 +14,7 @@ restate to me what I just said in your own words so I know you understood me
 
 1. If this conversation already has real work before `/restate`, that is the source. Use the current thread. Do not open transcripts.
 2. If this conversation is only `/restate`, use the **most recent other chat**:
-   - Find the newest `*.jsonl` under `~/.cursor/projects/*/agent-transcripts/`.
+   - Find the newest `*.jsonl` for the app you are running in: `~/.cursor/projects/*/agent-transcripts/` in Cursor, `~/.claude/projects/*/` in Claude Code.
    - Skip the current conversation if you can identify it.
 3. If the user names a chat, use that one instead.
 

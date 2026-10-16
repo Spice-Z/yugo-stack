@@ -1,6 +1,6 @@
 # yugo-stack
 
-Personal Cursor plugin.
+Personal skills for Cursor and Claude Code.
 
 ## Install
 
@@ -9,9 +9,12 @@ git clone https://github.com/Spice-Z/yugo-stack.git ~/.cursor/plugins/local/yugo
 ~/.cursor/plugins/local/yugo-stack/setup.sh
 ```
 
-Reload Cursor (`Developer: Reload Window`).
+Reload Cursor (`Developer: Reload Window`). In Claude Code, start a new session.
 
-`setup.sh` copies each skill as real files into your Cursor user Agent Store. Cloud Agents only see those copies — they do not follow `~/.cursor/skills` symlinks.
+`setup.sh` copies each skill as real files into:
+
+- your Cursor user Agent Store. Cloud Agents only see those copies — they do not follow `~/.cursor/skills` symlinks.
+- `~/.claude/skills` (or `$CLAUDE_CONFIG_DIR/skills`), so Claude Code gets the same `/so`, `/grasp`, ... commands.
 
 On another machine, run the same clone and `setup.sh`. To update, run `/up-yugo` or:
 
