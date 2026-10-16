@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  PR review summary: HTML template (light theme only).
+
+  How to fill it:
+  - Replace every {{PLACEHOLDER}}. Keep all text in plain English (see SKILL.md, Principle 8).
+  - Blocks between the "REPEAT: name" and "END REPEAT" comments are copied once per item.
+  - Blocks between the "OPTIONAL: name" and "END OPTIONAL" comments are removed when they do not apply.
+  - {{ON_WHO}}, {{ON_SCREEN}} and the other ON_ placeholders become " on" (with a leading space)
+    for a stop this PR changes, and become empty for an unchanged stop.
+  - Part numbers use <span class="n">1</span>. Use the same numbers everywhere.
+  - Do not add, remove, rename, or reorder sections (Principle 3).
+  - Escape &, <, > in any text you insert. Wrap code names in <code>.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>PR review: {{REPO}}#{{NUMBER}} {{SHORT_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#1c2430; --ink-2:#4f5b6b; --ink-3:#7a8595;
+  --line:#dde2e8; --accent:#2457c5; --accent-bg:#e8eefb; --warn:#9a5a00; --warn-bg:#fff4e0;
+  --code-bg:#eef1f5;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
+main{max-width:760px;margin:0 auto;padding:40px 20px 64px}
+code{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.84em;background:var(--code-bg);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+pre{background:var(--code-bg);border-radius:8px;padding:10px 12px;overflow-x:auto;margin:4px 0 10px}
+pre code{background:none;padding:0;font-size:13.5px;line-height:1.5}
+.meta{color:var(--ink-3);font-size:14px;margin:0 0 28px}
+.meta a{color:inherit}
+.block{margin:0 0 32px}
+.tag{font-size:14px;font-weight:600;color:var(--ink-3);margin:0 0 4px}
+h1{font-size:30px;line-height:1.25;font-weight:600;margin:0 0 10px;letter-spacing:-.01em}
+h2{font-size:22px;line-height:1.3;font-weight:600;margin:0 0 8px}
+p{margin:0 0 12px}
+.lead{font-size:18px;color:var(--ink-2)}
+.about{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.series{display:flex;gap:8px;flex-wrap:wrap;font-size:15px;margin:16px 0 0}
+.series span{padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2)}
+.series span.me{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);font-weight:600}
+.path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:8px 0 4px;position:relative}
+.stop{position:relative;padding:34px 8px 0 0}
+.stop::before{content:"";position:absolute;top:13px;left:0;right:0;height:2px;background:var(--line)}
+.stop:last-child::before{right:auto;width:14px}
+.dot{position:absolute;top:6px;left:0;width:16px;height:16px;border-radius:50%;background:var(--surface);border:2px solid var(--ink-3)}
+.stop.on .dot{background:var(--accent);border-color:var(--accent)}
+.stop b{display:block;font-size:14px;font-weight:600}
+.stop.on b{color:var(--accent)}
+.stop span{display:block;font-size:14px;color:var(--ink-2);line-height:1.4}
+.nums{font-size:13px;color:var(--accent);font-weight:600;margin-top:4px}
+.nums.quiet{color:var(--ink-3);font-weight:400}
+.legend{font-size:14px;color:var(--ink-3);margin:12px 0 0}
+.n{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:var(--accent-bg);color:var(--accent);font-size:13px;font-weight:600;margin-right:6px;vertical-align:1px}
+ul.parts{list-style:none;padding:0;margin:0}
+ul.parts li{padding:8px 0;border-bottom:1px solid var(--line)}
+ul.parts li:last-child{border-bottom:none}
+.live{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:12px 14px;font-size:16px}
+.live strong{font-weight:600}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:0 0 12px}
+summary{cursor:pointer;padding:14px 18px;font-size:17px;list-style:none;display:flex;gap:10px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--ink-3);transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+summary b{font-weight:600}
+.inner{padding:0 18px 16px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-top:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-2);font-size:14px}
+td:first-child{white-space:normal;width:34%;color:var(--ink-2)}
+tr.warn td:first-child{color:var(--warn);font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0 18px}
+.col{border-radius:8px;padding:12px 14px;background:var(--bg);font-size:15.5px}
+.col.after{background:var(--accent-bg)}
+.col h3{font-size:15px;font-weight:600;margin:0 0 6px}
+.col.after h3{color:var(--accent)}
+.col ol{margin:0;padding-left:20px}
+.col li{margin:3px 0}
+h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
+.detail p{margin:0 0 6px}
+.muted{color:var(--ink-3)}
+@media (max-width:560px){
+  .path{grid-template-columns:1fr;gap:0}
+  .stop{padding:0 0 14px 30px}
+  .stop::before{top:0;bottom:0;left:7px;right:auto;width:2px;height:auto}
+  .stop:last-child::before{bottom:auto;height:10px;width:2px}
+  .dot{top:3px}
+  h1{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){summary::before{transition:none}}
+</style>
+</head>
+<body>
+<main>
+
+<p class="meta"><a href="{{PR_URL}}">{{REPO}}#{{NUMBER}}</a> · {{AREA}} · {{FILE_COUNT}} files, +{{ADDITIONS}} −{{DELETIONS}}<!-- OPTIONAL: issue --> · {{ISSUE_ID}}<!-- END OPTIONAL --></p>
+
+<!-- 1. ABOUT THE FEATURE (Principle 4) -->
+<section class="block about">
+  <p class="tag">About the feature</p>
+  <h2>{{FEATURE_NAME}}</h2>
+  <p>{{FEATURE_EXPLANATION: 3 sentences or fewer. What it is, who uses it, how it normally works.}}</p>
+  <!-- OPTIONAL: key terms (skip when the feature needs no explanation) -->
+  <details style="margin:12px 0 0">
+    <summary><b>Key terms</b></summary>
+    <div class="inner scroll">
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <!-- REPEAT: term (3 to 5) -->
+        <tr><td>{{TERM}}</td><td>{{MEANING}}</td></tr>
+        <!-- END REPEAT -->
+      </table>
+    </div>
+  </details>
+  <!-- END OPTIONAL -->
+</section>
+
+<!-- 2. CHANGE -->
+<section class="block">
+  <p class="tag">Change</p>
+  <h1>{{HOOK: 8 words or fewer}}</h1>
+  <p class="lead">{{PLAIN_SUMMARY: 2 sentences. What was true before, what is true now.}}</p>
+  <!-- OPTIONAL: stack or series -->
+  <div class="series" aria-label="PR series">
+    <!-- REPEAT: series item. Add class="me" to this PR. -->
+    <span>{{POSITION}} · {{TITLE}} ({{PR_REF}})</span>
+    <!-- END REPEAT -->
+    <span class="me">{{POSITION}} · {{TITLE}} (this PR)</span>
+  </div>
+  <!-- END OPTIONAL -->
+</section>
+
+<!-- 3. FIVE-STOP MAP (Principles 3 and 5). Always all five stops, in this order.
+     Add class="on" to a stop this PR changes, and list its part numbers in .nums.
+     For an unchanged stop, remove the .nums line, or use class="nums quiet" for a note like "only called". -->
+<section class="block" aria-label="Where the change sits">
+  <div class="path">
+    <div class="stop{{ON_WHO}}"><i class="dot"></i><b>Who</b><span>{{WHO}}</span><div class="nums">{{WHO_PARTS}}</div></div>
+    <div class="stop{{ON_SCREEN}}"><i class="dot"></i><b>Screen</b><span>{{SCREEN}}</span><div class="nums">{{SCREEN_PARTS}}</div></div>
+    <div class="stop{{ON_ENDPOINT}}"><i class="dot"></i><b>Endpoint</b><span>{{ENDPOINT}}</span><div class="nums">{{ENDPOINT_PARTS}}</div></div>
+    <div class="stop{{ON_LOGIC}}"><i class="dot"></i><b>Logic</b><span>{{LOGIC}}</span><div class="nums">{{LOGIC_PARTS}}</div></div>
+    <div class="stop{{ON_DATA}}"><i class="dot"></i><b>Data</b><span>{{DATA}}</span><div class="nums">{{DATA_PARTS}}</div></div>
+  </div>
+  <p class="legend">Filled stops are changed in this PR. The numbers are the parts below.</p>
+</section>
+
+<!-- 4. PARTS (Principle 2). OPTIONAL: skip when the PR has only one part. -->
+<section class="block">
+  <ul class="parts">
+    <!-- REPEAT: part (2 to 5) -->
+    <li><span class="n">{{N}}</span>{{PART_ONE_LINE}}</li>
+    <!-- END REPEAT -->
+  </ul>
+</section>
+
+<!-- 5. LIVE FOR USERS TODAY -->
+<section class="block">
+  <p class="live"><strong>Live for users today:</strong> {{YES_NO_PARTLY}}. {{WHO_IS_AFFECTED_NOW: flags, deploy, any part outside the flag.}}</p>
+</section>
+
+<!-- 6. USE CASE (Principles 6 and 7) -->
+<details>
+  <summary><b>Use case:</b> {{SCENARIO_TITLE}}</summary>
+  <div class="inner">
+    <p>{{SCENARIO_SETUP: who, what they are doing, concrete values.}}</p>
+    <div class="cols">
+      <div class="col"><h3>Before</h3><ol>
+        <!-- REPEAT: step (up to 5) -->
+        <li>{{STEP}}</li>
+        <!-- END REPEAT -->
+      </ol></div>
+      <div class="col after"><h3>After</h3><ol>
+        <!-- REPEAT: step (up to 5). Start with <span class="n">N</span> when a step comes from a part. -->
+        <li><span class="n">{{N}}</span>{{STEP}}</li>
+        <!-- END REPEAT -->
+      </ol></div>
+    </div>
+    <h3 class="sub">What else happens</h3>
+    <div class="scroll"><table>
+      <tr><th>Situation</th><th>Result</th></tr>
+      <!-- REPEAT: situation (3 to 5). Use class="warn" and start with ⚠️ for risks or open questions. -->
+      <tr><td>{{SITUATION}}</td><td>{{RESULT}}</td></tr>
+      <tr class="warn"><td>⚠️ {{RISKY_SITUATION}}</td><td>{{RESULT_OR_CHECK}}</td></tr>
+      <!-- END REPEAT -->
+    </table></div>
+  </div>
+</details>
+
+<!-- 7. OVERVIEW -->
+<details>
+  <summary><b>Overview</b></summary>
+  <div class="inner scroll">
+    <table>
+      <tr><td><b>Why</b></td><td>{{WHY}}</td></tr>
+      <!-- REPEAT: part -->
+      <tr><td><span class="n">{{N}}</span>{{PART_NAME}}</td><td>{{WHAT_IT_DOES}}</td></tr>
+      <!-- END REPEAT -->
+      <tr class="warn"><td>Check this</td><td>{{ONE_TO_THREE_THINGS_TO_VERIFY}}</td></tr>
+    </table>
+  </div>
+</details>
+
+<!-- 8. DETAIL -->
+<details>
+  <summary><b>Detail</b></summary>
+  <div class="inner detail">
+    <!-- REPEAT: part -->
+    <h3 class="sub"><span class="n">{{N}}</span>{{PART_NAME}}</h3>
+    <p>{{FILES_AND_KEY_FACTS: wrap names in <code></code>}}</p>
+    <!-- OPTIONAL: before/after code, only when you have the diff -->
+    <p class="muted">Before:</p>
+    <pre><code>{{ONLY_THE_LINES_THAT_CHANGED_MEANING}}</code></pre>
+    <p class="muted">After:</p>
+    <pre><code>{{ONLY_THE_LINES_THAT_CHANGED_MEANING}}</code></pre>
+    <!-- END OPTIONAL -->
+    <!-- END REPEAT -->
+    <h3 class="sub">Tests</h3>
+    <p>{{WHAT_IS_COVERED_AND_WHAT_IS_NOT}}</p>
+    <h3 class="sub">Not checked</h3>
+    <p class="muted">{{WHAT_YOU_COULD_NOT_VERIFY, or "Nothing."}}</p>
+  </div>
+</details>
+
+</main>
+</body>
+</html>
