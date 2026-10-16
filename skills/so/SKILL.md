@@ -14,7 +14,7 @@ Simplify the last message and explain it with minimal bullet points.
 
 1. If this conversation already has real work before `/so`, that is the chat. Use the current thread. Do not open transcripts.
 2. If this conversation is only `/so` (or the same ask with no prior work), use the **most recent other chat**:
-   - Find the newest `*.jsonl` under `~/.cursor/projects/*/agent-transcripts/`.
+   - Find the newest `*.jsonl` for the app you are running in: `~/.cursor/projects/*/agent-transcripts/` in Cursor, `~/.claude/projects/*/` in Claude Code.
    - Skip the current conversation if you can identify it.
 3. If the user names a chat, use that one instead.
 

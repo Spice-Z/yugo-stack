@@ -13,7 +13,7 @@ The user will provide a short feature description. Trace how it works on whateve
 
 ## Phase 1: Research
 
-Do not search the repo yourself first. Launch **parallel Task subagents** in one turn, then stitch their results. These are Cursor agent types (`explore`, `generalPurpose`), not skills in this pack.
+Do not search the repo yourself first. Launch **parallel Task subagents** in one turn, then stitch their results. These are built-in agent types, not skills in this pack. The names below are Cursor's; in Claude Code use `Explore` for `explore` and `general-purpose` for `generalPurpose`.
 
 1. Skim only enough to guess which surfaces exist (mobile, backend, or both).
 2. Start 2–3 subagents together:
