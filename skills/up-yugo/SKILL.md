@@ -24,7 +24,7 @@ git clone https://github.com/Spice-Z/yugo-stack.git ~/.cursor/plugins/local/yugo
 git -C ~/.cursor/plugins/local/yugo-stack pull
 ```
 
-3. Refresh the Cloud Agent copies (real files, not symlinks):
+3. Refresh the Cloud Agent and Claude Code copies (real files, not symlinks):
 
 ```bash
 ~/.cursor/plugins/local/yugo-stack/setup.sh
@@ -34,6 +34,6 @@ git -C ~/.cursor/plugins/local/yugo-stack pull
 
 ## After
 
-Tell the user to reload Cursor (`Developer: Reload Window`). A skill cannot reload the app.
+Tell the user to reload Cursor (`Developer: Reload Window`) and to start a new Claude Code session if a skill does not show up there. A skill cannot reload the app.
 
 Do not pull or commit the workspace copy of this repo unless the user asked for that too.

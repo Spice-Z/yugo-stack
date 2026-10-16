@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Copy yugo-stack skills into the Cursor user Agent Store so Cloud Agents
-# can load them. ~/.cursor/skills symlinks are not synced to cloud.
+# Copy yugo-stack skills as real files into:
+#   - the Cursor user Agent Store, so Cloud Agents can load them
+#     (~/.cursor/skills symlinks are not synced to cloud)
+#   - Claude Code personal skills (~/.claude/skills, or $CLAUDE_CONFIG_DIR/skills)
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -33,29 +35,38 @@ copy_skill() {
   find "$dest" -type f -exec chmod 600 {} \;
 }
 
+install_skills() {
+  local dest_root="$1"
+  mkdir -p "$dest_root"
+  for skill in "${SKILLS[@]}"; do
+    local src="$SKILLS_DIR/$skill"
+    local dest="$dest_root/$skill"
+    if [ ! -d "$src" ]; then
+      echo "  [warn] missing skill folder: $src"
+      continue
+    fi
+    copy_skill "$src" "$dest"
+    echo "  [ok]   $dest"
+  done
+}
+
 echo ""
 echo "▶ Copying yugo-stack skills → Cursor user Agent Store (cloud)..."
 
-STORE_SKILLS="$(user_store_skills)" || {
+if STORE_SKILLS="$(user_store_skills)"; then
+  install_skills "$STORE_SKILLS"
+else
   echo "  [warn] no Cursor user Agent Store found. Sign in to Cursor once, then re-run."
   echo "         Local plugin skills still work from $SKILLS_DIR"
-  echo ""
-  exit 0
-}
+fi
 
-mkdir -p "$STORE_SKILLS"
-
-for skill in "${SKILLS[@]}"; do
-  src="$SKILLS_DIR/$skill"
-  dest="$STORE_SKILLS/$skill"
-  if [ ! -d "$src" ]; then
-    echo "  [warn] missing skill folder: $src"
-    continue
-  fi
-  copy_skill "$src" "$dest"
-  echo "  [ok]   $dest"
-done
+CLAUDE_SKILLS="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/skills"
 
 echo ""
-echo "✅ Cloud-visible copies are in: $STORE_SKILLS"
+echo "▶ Copying yugo-stack skills → Claude Code ($CLAUDE_SKILLS)..."
+
+install_skills "$CLAUDE_SKILLS"
+
+echo ""
+echo "✅ Done."
 echo ""
