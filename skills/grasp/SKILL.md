@@ -1,6 +1,6 @@
 ---
 name: grasp
-description: Explain a pull request so a reviewer can understand it fast, big picture first. Produces a layered summary that first explains the feature itself (what it is, key terms), then a very short plain-English hook for the change, a fixed five-stop map of where the change sits in the system (Who, Screen, Endpoint, Logic, Data), numbered parts, a "live for users today?" line, a concrete before/after use case, and collapsible overview and detail. Use this whenever someone asks to review, summarize, explain, or understand a PR, diff, branch, or set of agent-written changes, or pastes a PR link or number, even if they only say "what does this PR do?" or "help me review this".
+description: Explain a pull request so a reviewer can understand it fast, big picture first. Produces a layered summary that first explains the feature itself (what it is, key terms), then a collapsible overview of why and the parts, then a very short plain-English hook for the change, a fixed five-stop map of where the change sits in the system (Who, Screen, Endpoint, Logic, Data), numbered parts, a "live for users today?" line, a concrete before/after use case, and collapsible detail. Use this whenever someone asks to review, summarize, explain, or understand a PR, diff, branch, or set of agent-written changes, or pastes a PR link or number, even if they only say "what does this PR do?" or "help me review this".
 ---
 
 # grasp: understand a PR, big picture first
@@ -12,7 +12,7 @@ Explain a pull request to a reviewer who did not write it. Often the PR was writ
 Every rule in this skill comes from one of these principles. When a PR does not fit the template, follow the principles.
 
 1. **Understanding, not reading.** The hard part of a review is not the size of the diff. It is knowing why the change exists and what it does to real people. Every line of the output must help with that.
-2. **Fixed abstraction levels.** Start at the highest level and go down one level at a time: feature, change, system map, use case, overview, detail. Never mix high-level and low-level detail in one place. Each level must make sense without the levels below it. Deeper levels are optional for the reader, so put them in toggles.
+2. **Fixed abstraction levels.** Start at the highest level and go down one level at a time: feature, overview, change, system map, use case, detail. Never mix high-level and low-level detail in one place. Each level must make sense without the levels below it. Deeper levels are optional for the reader, so put them in toggles.
 3. **Same shape every time.** A stable structure becomes a mental model. The reader learns once where to look, and does not get lost. Do not add, remove, rename, or reorder sections. The five-stop map always has the same five stops.
 4. **Context before change.** A reviewer cannot judge a change to something they do not understand. Explain the feature first, then the change.
 5. **The whole picture.** Show where the change sits in the system. For frontend code: which screen and which feature use it. For backend code: which endpoints and which callers run it. For shared code: everything else that uses it.
@@ -68,7 +68,7 @@ Find this in the repo docs, README files, the linked issue, type and model defin
 
 Group the changes into **2 to 5 parts** by what they do, not by file. One part = one idea a reviewer can check on its own. Number them (1), (2), (3). If the PR truly does one thing, use one part and skip the parts list.
 
-The same numbers must appear everywhere below: map, use case, overview, detail. That way the reader can follow one part from top to bottom.
+The same numbers must appear everywhere below: overview, map, use case, and detail. That way the reader can follow one part from top to bottom.
 
 ### 5. Place it on the five-stop map
 
@@ -137,12 +137,12 @@ These apply to every line of the output.
 |---|---|
 | About the feature | 3 sentences |
 | Key terms | 5 terms, one line each |
+| Overview rows | One or two sentences each |
 | Hook | 8 words |
 | Plain summary | 2 sentences |
 | Parts | 5 parts, one line each |
 | Use case steps | 5 steps per side |
 | "What else happens" | 5 rows |
-| Overview rows | One or two sentences each |
 | Code in detail | Only the lines that changed meaning, about 10 lines per snippet |
 
 If a PR is too big to fit these limits, that is useful information. Say it in the "Live today" line or in Check this ("This PR does 7 things; consider splitting").
@@ -154,7 +154,7 @@ Check your output against this list:
 - Could someone who has never used this feature understand the About block?
 - Are the domain words used later explained in Key terms?
 - Does the hook make sense to someone who knows nothing about this PR?
-- Do the part numbers match across map, use case, overview, and detail?
+- Do the part numbers match across overview, map, use case, and detail?
 - Is every claim backed by the code, the diff, or the description?
 - Did you name any change that runs outside the feature flag?
 - Did you list what you could not check?

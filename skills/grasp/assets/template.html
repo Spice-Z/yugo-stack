@@ -128,7 +128,21 @@ h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
   <!-- END OPTIONAL -->
 </section>
 
-<!-- 2. CHANGE -->
+<!-- 2. OVERVIEW -->
+<details>
+  <summary><b>Overview</b></summary>
+  <div class="inner scroll">
+    <table>
+      <tr><td><b>Why</b></td><td>{{WHY}}</td></tr>
+      <!-- REPEAT: part -->
+      <tr><td><span class="n">{{N}}</span>{{PART_NAME}}</td><td>{{WHAT_IT_DOES}}</td></tr>
+      <!-- END REPEAT -->
+      <tr class="warn"><td>Check this</td><td>{{ONE_TO_THREE_THINGS_TO_VERIFY}}</td></tr>
+    </table>
+  </div>
+</details>
+
+<!-- 3. CHANGE -->
 <section class="block">
   <p class="tag">Change</p>
   <h1>{{HOOK: 8 words or fewer}}</h1>
@@ -143,7 +157,7 @@ h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
   <!-- END OPTIONAL -->
 </section>
 
-<!-- 3. FIVE-STOP MAP (Principles 3 and 5). Always all five stops, in this order.
+<!-- 4. FIVE-STOP MAP (Principles 3 and 5). Always all five stops, in this order.
      Add class="on" to a stop this PR changes, and list its part numbers in .nums.
      For an unchanged stop, remove the .nums line, or use class="nums quiet" for a note like "only called". -->
 <section class="block" aria-label="Where the change sits">
@@ -157,7 +171,7 @@ h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
   <p class="legend">Filled stops are changed in this PR. The numbers are the parts below.</p>
 </section>
 
-<!-- 4. PARTS (Principle 2). OPTIONAL: skip when the PR has only one part. -->
+<!-- 5. PARTS (Principle 2). OPTIONAL: skip when the PR has only one part. -->
 <section class="block">
   <ul class="parts">
     <!-- REPEAT: part (2 to 5) -->
@@ -166,12 +180,12 @@ h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
   </ul>
 </section>
 
-<!-- 5. LIVE FOR USERS TODAY -->
+<!-- 6. LIVE FOR USERS TODAY -->
 <section class="block">
   <p class="live"><strong>Live for users today:</strong> {{YES_NO_PARTLY}}. {{WHO_IS_AFFECTED_NOW: flags, deploy, any part outside the flag.}}</p>
 </section>
 
-<!-- 6. USE CASE (Principles 6 and 7) -->
+<!-- 7. USE CASE (Principles 6 and 7) -->
 <details>
   <summary><b>Use case:</b> {{SCENARIO_TITLE}}</summary>
   <div class="inner">
@@ -196,20 +210,6 @@ h3.sub{font-size:16px;font-weight:600;margin:16px 0 4px}
       <tr class="warn"><td>⚠️ {{RISKY_SITUATION}}</td><td>{{RESULT_OR_CHECK}}</td></tr>
       <!-- END REPEAT -->
     </table></div>
-  </div>
-</details>
-
-<!-- 7. OVERVIEW -->
-<details>
-  <summary><b>Overview</b></summary>
-  <div class="inner scroll">
-    <table>
-      <tr><td><b>Why</b></td><td>{{WHY}}</td></tr>
-      <!-- REPEAT: part -->
-      <tr><td><span class="n">{{N}}</span>{{PART_NAME}}</td><td>{{WHAT_IT_DOES}}</td></tr>
-      <!-- END REPEAT -->
-      <tr class="warn"><td>Check this</td><td>{{ONE_TO_THREE_THINGS_TO_VERIFY}}</td></tr>
-    </table>
   </div>
 </details>
 
