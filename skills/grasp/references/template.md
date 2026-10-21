@@ -24,6 +24,18 @@ Use `(1)`, `(2)`, `(3)` for part numbers everywhere, so they work in any rendere
 
 </details>
 
+<details>
+<summary><b>Overview</b></summary>
+
+| | |
+|---|---|
+| **Why** | <the problem, in one or two sentences> |
+| **(1) <part name>** | <what it does> |
+| **(2) <part name>** | <what it does> |
+| **Check this** | <the 1–3 things a reviewer should actually verify> |
+
+</details>
+
 ## Change: <Hook: 8 words or fewer>
 
 <Plain summary: one or two short sentences. What was true before, what is true now.>
@@ -72,18 +84,6 @@ Use `(1)`, `(2)`, `(3)` for part numbers everywhere, so they work in any rendere
 </details>
 
 <details>
-<summary><b>Overview</b></summary>
-
-| | |
-|---|---|
-| **Why** | <the problem, in one or two sentences> |
-| **(1) <part name>** | <what it does> |
-| **(2) <part name>** | <what it does> |
-| **Check this** | <the 1–3 things a reviewer should actually verify> |
-
-</details>
-
-<details>
 <summary><b>Detail</b></summary>
 
 **(1) <part name>**
@@ -114,7 +114,7 @@ After:
 ## Notes
 
 - **Before/after code:** include it only when you have the diff. Show the smallest snippet that shows the change in meaning. Skip pure renames and formatting.
-- **About block:** write it for someone who has never used the feature. It is about the feature as it exists, not about the change. The change starts at "Change:".
+- **About block:** write it for someone who has never used the feature. It is about the feature as it exists, not about the change. The change starts at Overview, then "Change:".
 - **"Live for users today":** this is where flags, deploy order, and shared code meet. If everything is behind an off flag except one shared helper, say exactly that. It changes how hard the reviewer must look.
 - **Map with everything changed:** if every stop changes, the map is still useful as the path. The parts list carries the detail.
 - **English only.** No other languages, and no translations.

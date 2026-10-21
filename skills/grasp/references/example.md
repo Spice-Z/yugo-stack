@@ -4,8 +4,9 @@ A complete example for a made-up PR in a made-up online shop. It shows every par
 
 Notice:
 - The About block explains the cart before the change, for someone who never used it.
+- Overview comes right after Key terms, before the Change hook.
 - The hook is 7 words and uses common words.
-- The part numbers (1)–(3) appear in the map, use case, overview, and detail.
+- The part numbers (1)–(3) appear in the overview, map, use case, and detail.
 - The "Live for users today" line names the one part that runs outside the flag.
 - "What else happens" has ⚠️ rows that the PR description does not stress.
 
@@ -25,6 +26,19 @@ The cart holds the items a shopper plans to buy. Shoppers can change quantities 
 | Cart row | One product in the cart, with its quantity and price |
 | Saved for later | A new list under the cart for items the shopper wants to keep but not buy now |
 | `formatPrice` | A shared helper that turns a number into a price label, like "$5.00" |
+
+</details>
+
+<details>
+<summary><b>Overview</b></summary>
+
+| | |
+|---|---|
+| **Why** | Shoppers remove items they still want, then cannot find them again. This keeps those items. |
+| **(1) API and table** | New `saved_items` table and two endpoints. Only the owner can read or change their saved items. |
+| **(2) Cart page** | New button on each cart row, and a "Saved for later" list under the cart. |
+| **(3) `formatPrice`** | Always shows two decimals. The saved list needed it, but every page uses it. |
+| **Check this** | Part 3 reaches every price, including emails. Out-of-stock saved items. |
 
 </details>
 
@@ -71,19 +85,6 @@ A shopper has three items in the cart. One is a gift they want to buy next month
 | Flag is off | No button, no new API calls. Cart works as before. |
 | ⚠️ Saved item goes out of stock | "Move to cart" behavior is not covered by tests. Check what the shopper sees. |
 | ⚠️ Every price on the site | (3) "$5" now shows as "$5.00". Order emails and invoices also use `formatPrice`. Check them. |
-
-</details>
-
-<details>
-<summary><b>Overview</b></summary>
-
-| | |
-|---|---|
-| **Why** | Shoppers remove items they still want, then cannot find them again. This keeps those items. |
-| **(1) API and table** | New `saved_items` table and two endpoints. Only the owner can read or change their saved items. |
-| **(2) Cart page** | New button on each cart row, and a "Saved for later" list under the cart. |
-| **(3) `formatPrice`** | Always shows two decimals. The saved list needed it, but every page uses it. |
-| **Check this** | Part 3 reaches every price, including emails. Out-of-stock saved items. |
 
 </details>
 
